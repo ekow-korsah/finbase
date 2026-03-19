@@ -149,8 +149,8 @@ All data is stored in a local SQLite database on your machine. Nothing is sent t
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ekow-korsah/finbase-web.git
-cd finbase-web
+git clone https://github.com/ekow-korsah/finbase.git
+cd finbase
 
 # 2. Install dependencies
 npm install
@@ -339,7 +339,7 @@ After adding or changing rules, click **Apply Rules to All Transactions** to rep
 ### File Structure
 
 ```
-finbase-web/
+finbase/
 ├── .env.example                        # Environment template
 ├── next.config.js                      # Next.js + Webpack config
 ├── package.json
