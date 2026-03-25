@@ -599,11 +599,11 @@ export default function Home() {
                 <div style={{display:'flex',gap:'10px',flexWrap:'wrap',alignItems:'flex-end'}}>
                   <div style={{flex:'1',minWidth:'140px'}}>
                     <label className="form-label">Source Name</label>
-                    <input className="form-input" id="is-name" type="text" placeholder="e.g. Tribe Network" />
+                    <input className="form-input" id="is-name" type="text" placeholder="e.g. Acme Corp" />
                   </div>
                   <div style={{flex:'2',minWidth:'200px'}}>
                     <label className="form-label">Keywords <span style={{color:'var(--muted)',fontWeight:400,textTransform:'none'}}>(comma-separated, match against merchant)</span></label>
-                    <input className="form-input" id="is-keywords" type="text" placeholder="e.g. TRIBE NETWORK, TRIBE" />
+                    <input className="form-input" id="is-keywords" type="text" placeholder="e.g. ACME CORP, ACME" />
                   </div>
                   <div style={{minWidth:'120px'}}>
                     <label className="form-label">Category</label>
@@ -622,18 +622,18 @@ export default function Home() {
               <div className="section-title" style={{marginBottom:'8px'}}>Savings Destinations</div>
               <p style={{fontSize:'13px',color:'var(--muted)',marginBottom:'16px',lineHeight:'1.6'}}>
                 Define your investment accounts. Any debit whose merchant matches a keyword will be tagged as <strong style={{color:'var(--text)'}}>Savings</strong> — not counted as an expense.
-                Works for Wealthsimple, RRSP, TFSA, or any brokerage account.
+                Works for any brokerage, RRSP, TFSA, 401(k), or investment account.
               </p>
               <div id="savings-destinations-list" style={{marginBottom:'16px'}}></div>
               <div style={{background:'var(--bg)',border:'1px solid var(--border)',borderRadius:'10px',padding:'16px'}}>
                 <div style={{display:'flex',gap:'10px',flexWrap:'wrap',alignItems:'flex-end'}}>
                   <div style={{flex:'1',minWidth:'140px'}}>
                     <label className="form-label">Destination Name</label>
-                    <input className="form-input" id="sd-name" type="text" placeholder="e.g. Wealthsimple Investments" />
+                    <input className="form-input" id="sd-name" type="text" placeholder="e.g. Vanguard Brokerage" />
                   </div>
                   <div style={{flex:'2',minWidth:'200px'}}>
                     <label className="form-label">Keywords <span style={{color:'var(--muted)',fontWeight:400,textTransform:'none'}}>(comma-separated, match against merchant)</span></label>
-                    <input className="form-input" id="sd-keywords" type="text" placeholder="e.g. WEALTHSIMPLE, WSI TRANSFER" />
+                    <input className="form-input" id="sd-keywords" type="text" placeholder="e.g. VANGUARD, VGI TRANSFER" />
                   </div>
                   <button className="btn btn-gold" id="btn-add-savings-dest">Add</button>
                 </div>

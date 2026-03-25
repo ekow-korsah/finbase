@@ -323,8 +323,8 @@ Define investment and savings accounts so transfers to them are counted as savin
 
 | Field | Example |
 |---|---|
-| Destination Name | `Wealthsimple TFSA` |
-| Keywords | `WEALTHSIMPLE, WSI TRANSFER` |
+| Destination Name | `Vanguard Brokerage` |
+| Keywords | `VANGUARD, VGI TRANSFER` |
 
 Debit transactions matching these keywords are categorized as `Savings`.
 
