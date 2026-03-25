@@ -6,8 +6,24 @@ A self-hosted personal finance dashboard built with Next.js. Import bank stateme
 
 ---
 
+## Quick Start
+
+```bash
+git clone https://github.com/ekow-korsah/finbase.git
+cd finbase
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) — the database is created automatically on first run.
+
+> **Need AI features?** Go to **Settings** in the sidebar and add your [Anthropic](https://console.anthropic.com) or [OpenAI](https://platform.openai.com/api-keys) API key. Without one, all non-AI features still work.
+
+---
+
 ## Table of Contents
 
+- [Quick Start](#quick-start)
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
