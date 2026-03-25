@@ -5,15 +5,26 @@ export default function handler(req, res) {
 
   if (req.method === 'GET') {
     const { key } = req.query;
+    const SENSITIVE_KEYS = new Set(['ai_api_key', 'anthropic_api_key']);
     if (!key) {
-      // Return all settings as { key: value } map
+      // Return all settings as { key: value } map, masking sensitive values
       const rows = db.prepare('SELECT key, value FROM settings').all();
       const map = {};
-      for (const r of rows) map[r.key] = r.value;
+      for (const r of rows) {
+        if (SENSITIVE_KEYS.has(r.key) && r.value) {
+          map[r.key] = '••••' + r.value.slice(-4);
+          map[r.key + '_set'] = true;
+        } else {
+          map[r.key] = r.value;
+        }
+      }
       return res.json(map);
     }
     const row = db.prepare('SELECT * FROM settings WHERE key = ?').get(key);
     if (!row) return res.status(404).json(null);
+    if (SENSITIVE_KEYS.has(row.key) && row.value) {
+      return res.json({ ...row, value: '••••' + row.value.slice(-4) });
+    }
     return res.json(row);
   }
 

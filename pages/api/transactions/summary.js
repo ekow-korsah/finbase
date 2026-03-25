@@ -4,7 +4,8 @@ export default function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).end();
   const db = getDB();
   const { month } = req.query;
-  const where = month ? `WHERE date LIKE '${month}%'` : '';
+  const where = month ? 'WHERE date LIKE ?' : '';
+  const params = month ? [month + '%'] : [];
 
   const totals = db.prepare(
     "SELECT " +
@@ -12,11 +13,11 @@ export default function handler(req, res) {
     "SUM(CASE WHEN amount < 0 AND category NOT IN ('Transfers','ATM/Cash','Savings') THEN ABS(amount) ELSE 0 END) as totalExpenses, " +
     "SUM(CASE WHEN category = 'Savings' AND amount < 0 THEN ABS(amount) ELSE 0 END) as totalSavings " +
     "FROM transactions " + where
-  ).get();
+  ).get(...params);
 
   const byCategory = db.prepare(
     'SELECT category, SUM(amount) as total, COUNT(*) as count FROM transactions ' + where + ' GROUP BY category ORDER BY ABS(SUM(amount)) DESC'
-  ).all();
+  ).all(...params);
 
   const totalIncome = totals.totalIncome || 0;
   const totalExpenses = totals.totalExpenses || 0;

@@ -6,8 +6,14 @@ node_modules/
 out/
 
 # Environment variables (contains API keys)
+.env
 .env.local
 .env*.local
+*.pem
+*.key
+*.cert
+*.db
+*.sqlite
 
 # macOS
 .DS_Store

@@ -13,14 +13,20 @@ export default function handler(req, res) {
 
   if (req.method === 'POST') {
     const { name, ticker, quantity, cost_basis, current_value, notes } = req.body;
+    if (!name || typeof name !== 'string' || !name.trim()) {
+      return res.status(400).json({ error: 'name is required' });
+    }
+    if (current_value == null || isNaN(Number(current_value))) {
+      return res.status(400).json({ error: 'current_value must be a number' });
+    }
     const result = db.prepare(
       'INSERT INTO holdings (name, ticker, quantity, cost_basis, current_value, notes) VALUES (?, ?, ?, ?, ?, ?)'
     ).run(
       name.trim(),
-      ticker ? ticker.trim().toUpperCase() : null,
-      quantity || null,
-      cost_basis || null,
-      current_value,
+      ticker ? String(ticker).trim().toUpperCase() : null,
+      quantity != null ? Number(quantity) : null,
+      cost_basis != null ? Number(cost_basis) : null,
+      Number(current_value),
       notes || null
     );
     return res.status(201).json(db.prepare('SELECT * FROM holdings WHERE id = ?').get(result.lastInsertRowid));
